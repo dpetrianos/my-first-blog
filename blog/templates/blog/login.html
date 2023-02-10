@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Login</h1><br>
+ 
+<style>
+h5 {
+    color: red;
+}
+</style>
+
+{% for message in messages %}
+<h5>{{ message }}</h5>
+{% endfor %}
+
+
+    <form method="POST" action="login" class="container">{% csrf_token %}     <!-- class="user-form" -->
+<!-- {{ form.as_p }} -->
+
+        <p>Username :</p>
+        <p><input type="text" name="username" maxlength="50" placeholder="Your Username"></p><br>
+        <p>Password :</p>
+        <p><input type="text" name="password" maxlength="50" placeholder="Give password"></p><br>
+        <button type="submit" >Submit</button>
+        <!-- <button type="submit" class="save btn btn-default">Είσοδος</button> -->
+    </form>
+    <form method="GET" action="register" class="container">{% csrf_token %}  
+        <button type="submit" >Register</button>
+    </form>
+{% endblock %}
+

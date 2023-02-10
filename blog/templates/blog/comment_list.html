@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+<style>
+    h5 {
+        color: red;
+    }
+</style>
+    
+{% for message in messages %}
+<h5>{{ message }}</h5>
+{% endfor %}
+    
+
+{% block content %}
+    <a class="post post-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+    {% for comment in comments %}
+    <div class="post">
+        <p>
+            <!-- <a class="post-title">{{ post.title }} </a> -->
+            <span class="post-author"> ({{ comment.author }}) </span>
+        </p>
+        <p><div class="date">
+            <h5>{{ comment.created_date }}</h5>
+        </div>
+    </p>
+    <p>{{ comment.text|truncatewords:20|linebreaksbr }}</p><br>
+    </div>
+    {% endfor %} 
+
+    <a href="{% url 'addcomment' %}" class="post nav-item navbar-btn btn-success btn-lg">
+    <span class="glyphicon glyphicon-plus"></span>&nbsp; New Comment </a>
+
+    <p><br><br><a class="btn btn-secondary" href="{% url 'post_list' %}"><span class="glyphicon glyphicon-arrow-left"></span></a></p>
+{% endblock %}
+
+<!-- {% block comment %} -->
+
+<!-- {% endblock %} -->

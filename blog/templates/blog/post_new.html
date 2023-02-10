@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>New post</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-grid gap-2 d-md-block">
+        <a class="btn btn-secondary" href="{% url 'post_list' %}"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        <button type="submit" class="save btn btn-primary">Save</button>
+        </div>
+    </form>
+{% endblock %}
+

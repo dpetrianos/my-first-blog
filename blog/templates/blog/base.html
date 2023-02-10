@@ -1,19 +1,60 @@
 {% load static %}
 <html>
     <head>
-        <title>Django1 blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>My Django1 blog</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        
+        <!-- <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
-    <body>
-        <div class="page-header">
+    <body class="d-flex flex-column min-vh-100">
+        <!-- <div class="page-header">
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"> (New_Post) </span></a>
             <h1><a href="/">Django1 blog</a></h1>
+            <a class="top-menu2 navbar navbar-expand-lg navbar-light bg-light justify-content-between">({{ request.user }})</a>
+        </div> -->
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+                <img src="/static/images/mybooks.png" alt="Problem !!">
+                <!-- <img src="/mybooks.png" alt="Problem !!"> -->
+                <a class="navbar-brand " href="/">My blog</a>    <!-- navbar-brand justify-content-center -->
+                {% if user.is_authenticated %}
+                <p>
+                    <a class="navbar-text ">({{ request.user }})</a>
+                    <a href="{% url 'logout' %}" class="navbar-text">logout... &nbsp;&nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
+                <!-- <a class="navbar-text">({{ username.username }} --- {{ user.username }} --- {{ user.get_username }} --- {{ request.user }})</a> -->
+                </p> 
+                {% else %} 
+                <a class="navbar-text ">(No User Connected)</a>
+                {% endif %} 
+                <!-- <a href="{% url 'post_new' %}" class="navbar-btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-plus"></span> New Post </a> -->
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+                <!-- <a class="nav-item nav-link " href="{% url 'post_new' %}"><h3><span class="glyphicon glyphicon-plus"> (New_Post) </span></h3></a> -->
+                {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="nav-item navbar-btn btn-primary btn-lg">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp; New Post </a>
+
+                <!-- <a href="<div data-gb-custom-block data-tag="url" data-0='post_draft_list'></div> -->
+                  <!-- " class="top-menu"><span class="glyphicon glyphicon-edit"></span></a> -->
+                <a href="{% url 'post_draft_list' %}" class="nav-item navbar-btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-edit"></span>&nbsp; Edit Draft </a>
+                {% endif %}
+                <!-- <a class="nav-item nav-link top-menu2" href="{% url 'post_new' %}"><h3><span class="glyphicon glyphicon-plus"> (New_Post) </span></h3></a> -->
+            </nav>
         </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
+        <!-- <div class="content container"> -->
+        <div class="mycontainer bg-light">
+            <div class="row99">
+                <!-- <div class="col-md-8"> -->
+                <div>
                 {% block content %}
                 {% endblock %}
                 </div>

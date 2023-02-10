@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+<style>
+    h5 {
+        color: red;
+    }
+</style>
+    
+{% for message in messages %}
+<h5>{{ message }}</h5>
+{% endfor %}
+    
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <!-- <h1><a href="">{{ post.title }}</a></h1> -->
+            <p>
+                <a class="post-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} </a> 
+                <span class="post-author"> ({{ post.author }}) </span>
+            </p>
+            <p><div class="date">
+                <h5>created: {{ post.created_date|date:'d-m-Y' }}</h5>
+                <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
+                <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}" type="button"> Publish </a>
+            </div>
+            </p>
+            <p>{{ post.text|truncatewords:20|linebreaksbr }}</p>
+        </div>
+        {% endfor %}
+        <p><a class="btn btn-secondary" href="{% url 'post_list' %}"><span class="glyphicon glyphicon-arrow-left"></span></a></p>
+{% endblock %}

@@ -1,0 +1,26 @@
+# path('post/<int:pk>/comments', views.comment_list, name='comment_list'),
+
+
+# def comment_list(request,pk):
+#     if not request.user.is_authenticated:
+#         return redirect('login')
+#     comments = Comment.objects.filter(post=pk)
+#     if not comments :
+#         return redirect('/')
+#     else:
+#         print(comments)
+#         post = get_object_or_404(Post, pk=pk)
+#         print(post.title)
+#         return render(request,'blog/comment_list.html', {'comments' : comments , 'post' : post})
+
+<!-- 
+<p class="comment">Comments : {{ post.ncomments }}</p>
+{% for comment in comments %}
+<div class="comment bg-light">
+    <p><span class="comment-author"> ({{ comment.author }}) </span></p>
+    <p><div class="date">
+        <h5>{{ comment.created_date }}</h5>
+    </div></p>
+    <p>{{ comment.text|truncatewords:20|linebreaksbr }}</p><br>
+</div>
+{% endfor %}  -->

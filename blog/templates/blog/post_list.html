@@ -1,14 +1,29 @@
 {% extends 'blog/base.html' %}
 
+<style>
+    h5 {
+        color: red;
+    }
+</style>
+    
+{% for message in messages %}
+<h5>{{ message }}</h5>
+{% endfor %}
+    
+
 {% block content %}
     {% for post in posts %}
         <div class="post">
-            <div class="date">
-                {{ post.published_date }}
+            <p>
+                <a class="post-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} </a> 
+                <span class="post-author"> ({{ post.author }}) </span>
+            </p>
+            <p><div class="date">
+                <h5>{{ post.published_date |date:"D d M Y" }}, {{ post.published_date |time:"H:i a" }}</h5>
             </div>
-            <!-- <h1><a href="">{{ post.title }}</a></h1> -->
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
+            </p> 
+            <p>{{ post.text|truncatewords:20|linebreaksbr }}</p><br>
+            <a class="comment" href="{% url 'post_detail' pk=post.pk %}">Comments : {{ post.comments.count }}</a>
         </div>
-    {% endfor %}
+    {% endfor %} 
 {% endblock %}
