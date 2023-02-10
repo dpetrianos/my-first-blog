@@ -46,6 +46,8 @@
                   <!-- " class="top-menu"><span class="glyphicon glyphicon-edit"></span></a> -->
                 <a href="{% url 'post_draft_list' %}" class="nav-item navbar-btn btn-info btn-lg">
                     <span class="glyphicon glyphicon-edit"></span>&nbsp; Edit Draft </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
                 {% endif %}
                 <!-- <a class="nav-item nav-link top-menu2" href="{% url 'post_new' %}"><h3><span class="glyphicon glyphicon-plus"> (New_Post) </span></h3></a> -->
             </nav>

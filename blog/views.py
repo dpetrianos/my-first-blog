@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.core.paginator import Paginator
 # from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 WS_EX_TOPMOST = 0x40000
 MB_DEFAULT_DESKTOP_ONLY = 0x00020000
@@ -18,6 +19,7 @@ def Mbox(title, text, style):
     return ctypes.windll.user32.MessageBoxW(0, text, title, style) 
     # ctypes.windll.user32.MessageBoxW()
 
+@login_required
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     ep = Mbox('Warning! ', 'Are you sure for deleting this blog ?', STYLE)       #48+4
@@ -38,6 +40,7 @@ def post_delete(request, pk):
 
 # Create your views here.
 
+@login_required
 def post_list(request):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -58,7 +61,7 @@ def post_list(request):
         return render(request, 'blog/post_list.html', {'posts' : posts})
         # return render(request, 'blog/post_list.html', {'posts' : posts, 'comments' : n_comments})
 
-
+@login_required
 def post_draft_list(request):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -68,12 +71,13 @@ def post_draft_list(request):
     else:
         return render(request, 'blog/post_draft_list.html', {'posts' : posts})
 
+@login_required
 def post_publish(request,pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('post_detail', pk=pk)
 
-
+@login_required
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = Comment.objects.filter(post=pk)
@@ -85,7 +89,7 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'comments' : comments , 'post' : post})    
 
 
-
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -104,6 +108,7 @@ def post_edit(request, pk):
 #     form = PostForm()
 #     return render(request, 'blog/post_edit.html', {'form': form})
 
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
