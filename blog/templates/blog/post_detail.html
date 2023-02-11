@@ -2,9 +2,9 @@
 
 {% block content %}
     <div class="post">
-        <span class="post-title">{{ post.title }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="post-title">{{ post.title }}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="post-author"> ({{ post.author }}) </span>
         {% if post.published_date %}
-            <span class="date">
+            <span class="date">&nbsp;&nbsp;&nbsp;&nbsp;
                 ({{ post.published_date |date:"D d M Y" }}, {{ post.published_date |time:"H:i a" }})
             </span><br>
         {% endif %}
