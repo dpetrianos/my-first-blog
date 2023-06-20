@@ -11,22 +11,30 @@
 
         {% if user.is_authenticated and request.user == post.author %}
             </br>
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+                <!-- <span class="glyphicon glyphicon-pencil"></span> -->
+                <img class="img" src="/static/assets/img/pencil-fill.svg" alt="No image" width="40" height="32">
+            </a>
+            <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}">
+                <!-- <span class="glyphicon glyphicon-trash"></span> -->
+                <img class="img" src="/static/assets/img/trash.svg" alt="No image" width="40" height="32">
+            </a>
         {% endif %}
-        <p><br>{{ post.text|linebreaksbr }}</p>
+        <p><br>{{ post.text|linebreaksbr }}</p><br>
 
 
 
+        <!-- <hr style="width:50%;text-align:left;margin-left:0!important"> -->
         {% if page_obj %}
         <!-- post.ncomments  -->
+        <hr>
             <a href="#" class="comment">Comments : {{ post.comments.count }}</a> 
 
             {% for comment in page_obj %}
             <div class="comment bg-light">
                 <p><span class="post-author"> ({{ comment.author }}) </span>&nbsp;&nbsp;
                 <span class="date">{{ comment.created_date |date:"D d M Y" }}, {{ comment.created_date |time:"H:i a" }}</span>
-                <p><br>{{ comment.text|truncatewords:20|linebreaksbr }}</p>
+                <p><br>{{ comment.text|truncatewords:20|linebreaksbr }}</p><br>
             </div>
             {% endfor %} 
         
@@ -53,10 +61,13 @@
         <form action="addcomment" method="POST">{% csrf_token %}
             <label for="newcomment">New Comment :</label><br>
             <!-- <input type="text" id="newcomment" name="newcomment" size="50" maxlength="300">&nbsp;&nbsp;&nbsp;&nbsp; -->
-            <textarea name="newcomment" rows="4" cols="50" placeholder="Write your comment ...."></textarea>&nbsp;<br>
+            <textarea name="newcomment" rows="4" cols="50" placeholder="Write your comment ...." required></textarea>&nbsp;<br>
             <input type="submit" value="Submit New Comment">
         </form>
 
-        <p><br><a class="btn btn-secondary" href="{% url 'post_list' %}"><span class="glyphicon glyphicon-arrow-left"></span></a></p>
+        <p><br><a class="btn btn-secondary1" href="{% url 'post_list' %}">
+            <!-- <span class="glyphicon glyphicon-arrow-left"></span> -->
+            <span><img class="img" src="/static/assets/img/arrow_left56.png" alt="Bootstrap" width="48" height="36"></span> 
+        </a></p>
     </div>
 {% endblock %}

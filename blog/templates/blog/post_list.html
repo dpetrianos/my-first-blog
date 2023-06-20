@@ -14,13 +14,13 @@
 {% block content %}
     {% for post in posts %}
         <div class="post">
+            <p><div class="date">
+                <h6>Published : {{ post.published_date |date:"D d M Y" }}, {{ post.published_date |time:"H:i a" }}</h6>
+            </div>
             <p>
                 <a class="post-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} </a> 
                 <span class="post-author"> ({{ post.author }}) </span>
             </p>
-            <p><div class="date">
-                <h5>{{ post.published_date |date:"D d M Y" }}, {{ post.published_date |time:"H:i a" }}</h5>
-            </div>
             </p> 
             <p>{{ post.text|truncatewords:20|linebreaksbr }}</p><br>
             <a class="comment" href="{% url 'post_detail' pk=post.pk %}">Comments : {{ post.comments.count }}</a>

@@ -5,7 +5,10 @@
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <div class="d-grid gap-2 d-md-block">
-        <a class="btn btn-secondary" href="{% url 'post_list' %}"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        <a class="btn btn-primary1" href="{% url 'post_list' %}">
+            <!-- <span class="glyphicon glyphicon-arrow-left"></span> -->
+            <span><img class="img" src="/static/assets/img/arrow_left56.png" alt="Bootstrap" width="48" height="36"></span>
+        </a>
         <button type="submit" class="save btn btn-primary">Save</button>
         </div>
     </form>

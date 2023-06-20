@@ -4,22 +4,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>My Django1 blog</title>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
 
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">            
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
         
         <!-- <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
+
     <body class="d-flex flex-column min-vh-100">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  
         <!-- <div class="page-header">
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"> (New_Post) </span></a>
             <h1><a href="/">Django1 blog</a></h1>
             <a class="top-menu2 navbar navbar-expand-lg navbar-light bg-light justify-content-between">({{ request.user }})</a>
         </div> -->
-        <div class="container-fluid">
+        
+        <div class="container">     <!-- fluid -->
+            <!-- <img src="/static/assets/img/bootstrap.svg" alt="Bootstrap" width="32" height="32"> -->
+            <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"> -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
                 <img src="/static/images/mybooks.png" alt="Problem !!">
                 <!-- <img src="/mybooks.png" alt="Problem !!"> -->
@@ -27,7 +37,10 @@
                 {% if user.is_authenticated %}
                 <p>
                     <a class="navbar-text ">({{ request.user }})</a>
-                    <a href="{% url 'logout' %}" class="navbar-text">logout... &nbsp;&nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
+                    <a href="{% url 'logout' %}" class="navbar-text">logout... &nbsp;&nbsp;
+                        <img src="/static/assets/img/box-arrow-right.svg" width="32" height="32">
+                        <!-- <span class="glyphicon glyphicon-log-out"></span> -->
+                    </a>
                 <!-- <a class="navbar-text">({{ username.username }} --- {{ user.username }} --- {{ user.get_username }} --- {{ request.user }})</a> -->
                 </p> 
                 {% else %} 
@@ -39,12 +52,19 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
                 <!-- <a class="nav-item nav-link " href="{% url 'post_new' %}"><h3><span class="glyphicon glyphicon-plus"> (New_Post) </span></h3></a> -->
                 {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="nav-item navbar-btn btn-primary btn-lg">
-                    <span class="glyphicon glyphicon-plus"></span>&nbsp; New Post </a>
+                <a href="{% url 'post_new' %}" class="nav-item btn btn-primary btn-lg">
+                    <!-- <span class="glyphicon glyphicon-plus"></span>     -->
+                    <!-- <span class="glyphicon glyphicon-plus"></span>&nbsp; New Post  -->
+                    <span><img src="/static/assets/img/cross_white.png" alt="Bootstrap" width="24" height="24">&nbsp; New Post</span> 
+                    <!-- <img src="/static/assets/img/plus.svg" alt="Bootstrap" width="32" height="32" color="red" >&nbsp; New Post </a> -->
+                    <!-- <span class="plus1" style="font-size:1.2em;font-weight:bolder">+</span><span style="font-size:1em;margin-bottom:20px;">&nbsp; New Post </span> -->
+
+                </a>
 
                 <!-- <a href="<div data-gb-custom-block data-tag='url' data-0='post_draft_list'></div>" class="nav-item navbar-btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span></a> -->
-                <a href="{% url 'post_draft_list' %}" class="nav-item navbar-btn btn-info btn-lg">
-                    <span class="glyphicon glyphicon-edit"></span>&nbsp; Edit Draft </a>
+                <a href="{% url 'post_draft_list' %}" class="nav-item btn btn-info btn-lg">
+                    <span><img src="/static/assets/img/pencil-fill.svg" alt="Bootstrap" width="24" height="24">&nbsp; Edit Draft </span></a>
+                    <!-- <span class="glyphicon glyphicon-edit"></span>&nbsp; Edit Draft </a> -->
                 {% else %}
                     <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
                 {% endif %}
@@ -52,14 +72,23 @@
             </nav>
         </div>
         <!-- <div class="content container"> -->
-        <div class="mycontainer bg-light">
-            <div class="row99">
-                <!-- <div class="col-md-8"> -->
-                <div>
-                {% block content %}
-                {% endblock %}
+        <!-- <div class="mycontainer bg-light"> -->
+        <div class="container bg-light">
+            <div class="row">
+                <div class="col-md-10">
+                    {% block content %}
+                    {% endblock %}
                 </div>
             </div>
         </div>
     </body>
+    <footer>
+        <div class="row me-2 justify-content-center order-last">
+            <div class="col-md-2">
+                <p>&copy; (2023): Dimitris Petrianos<br>
+                <a href="mailto:dpetrianos@example.com">dpetrianos@example.com</a></p>
+            </div>
+        </div>
+    </footer>
+      
 </html>

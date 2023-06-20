@@ -1,11 +1,14 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h2>Edit post</h2>
+    <br><h2>Edit post</h2>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit"  class="img btn btn-default">Save</button>
     </form>
-    <p><a class="btn btn-secondary" href="{% url 'post_list' %}"><span class="glyphicon glyphicon-arrow-left"></span></a></p>
+    <p><a class="btn btn-secondary1" href="{% url 'post_list' %}">
+        <!-- <span class="glyphicon glyphicon-arrow-left"></span> -->
+        <span><img class="img" src="/static/assets/img/arrow_left56.png" alt="Bootstrap" width="48" height="36"></span>
+    </a></p>
 {% endblock %}
 

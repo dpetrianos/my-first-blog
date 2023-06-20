@@ -1,28 +1,38 @@
-# path('post/<int:pk>/comments', views.comment_list, name='comment_list'),
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="../../static/css/temp.css">
 
-# def comment_list(request,pk):
-#     if not request.user.is_authenticated:
-#         return redirect('login')
-#     comments = Comment.objects.filter(post=pk)
-#     if not comments :
-#         return redirect('/')
-#     else:
-#         print(comments)
-#         post = get_object_or_404(Post, pk=pk)
-#         print(post.title)
-#         return render(request,'blog/comment_list.html', {'comments' : comments , 'post' : post})
+  </head>
+  <body class="p-3 m-0 border-0 bd-example bd-example-row">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+      
+    <div class="container text-center">              <!-- text-center -->
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"> -->
+        <div class="row justify-content-between">    <!-- align-items-start -->
+            <div class="col-2">
+                <figure class="figure">
+                <img src="../../static/images/mybooks.png" class="img-fluid img-thumbnail" alt="...">
+                <figcaption class="figure-caption">A caption for the above image.</figcaption>
+            </figure>
+                Column
+            </div>
+            <div class="col-3">
+                <a class="navbar-brand1 " href="./temp.html">My blog</a>
+                Column
+            </div>
+            <div class="col-4" >
+                Column-4
+            </div>
+        <!-- </nav> -->
+    </div>
+  </body>
+</html>
 
-<!-- 
-<p class="comment">Comments : {{ post.ncomments }}</p>
-{% for comment in comments %}
-<div class="comment bg-light">
-    <p><span class="comment-author"> ({{ comment.author }}) </span></p>
-    <p><div class="date">
-        <h5>{{ comment.created_date }}</h5>
-    </div></p>
-    <p>{{ comment.text|truncatewords:20|linebreaksbr }}</p><br>
-</div>
-{% endfor %}  -->
-
-<a href='<div data-gb-custom-block data-tag="url" data-0="post_draft_list"></div>' class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>

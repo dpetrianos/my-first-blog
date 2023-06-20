@@ -1,0 +1,9 @@
+.container {
+    background-color:lightgray;
+    color:blue;
+    border: 1px solid green;
+}
+
+div[class^="col"] {
+    border: 1px solid #aaa;
+}
