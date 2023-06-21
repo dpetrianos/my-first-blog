@@ -13,4 +13,5 @@ urlpatterns = [
     path('register',views.register, name='register'),
     path('drafts/', views.post_draft_list, name='post_draft_list'),
     path('post/<pk>/publish/', views.post_publish, name='post_publish'),
+    #path('accounts/login/register/', views.register, name='register'),
 ]

@@ -22,7 +22,7 @@ def Mbox(title, text, style):
 @login_required
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    ep = Mbox('Warning! ', 'Are you sure for deleting this blog ?', STYLE)       #48+4
+    ep = Mbox('Warning! ', 'Are you sure for deleting this post ?', STYLE)       #48+4
     
     if (ep==6):
         Mbox('The answer is YES  6 ', str(ep), STYLE)
@@ -40,10 +40,11 @@ def post_delete(request, pk):
 
 # Create your views here.
 
-@login_required
+#@login_required
 def post_list(request):
+    #print("------- starting -------")
     if not request.user.is_authenticated:
-        return redirect('login')
+        return redirect('login') 
 
     print("------- starting -------")
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -194,6 +195,22 @@ def register(request):
         password = request.POST['password']
         password2 = request.POST['password2']
 
+        # print("--------register------- username = :")
+        # print(username is None)
+        # print(username == "")
+
+        if username == "" or email == "" or password == "":
+            messages.info(request, 'Username, Password or email must not be empty')
+            #return render(request, 'blog/register.html', {'form': form})
+            return redirect('register')
+        
+        # if username is not None:
+        #     auth.login(request, username)
+        #     return redirect('/')
+        # else:
+        #     messages.info(request, 'Credentials are Invalid')   #Λάθος στα στοιχεία εισόδου
+        #     return redirect('login')
+
         if password == password2:
             if User.objects.filter(email=email).exists():
                 messages.info(request, 'Email already used !!')
@@ -212,4 +229,5 @@ def register(request):
             return redirect('register')
     else:
         return render(request, 'blog/register.html')
+        #return render(request, 'accounts/login/register/register.html')
 

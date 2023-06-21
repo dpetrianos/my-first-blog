@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1>Register or Login !!!!!!</h1><br>
+<style>
+h5 {
+    color: red;
+}
+</style>
+
+{% for message in messages %}
+<h5>{{ message }}</h5>
+{% endfor %}
+
+
+<form method="POST" action="register" class="container">{% csrf_token %}
+    <p>Username :</p>
+    <p><input type="text" name="username" maxlength="50" placeholder="Your Username"></p><br>
+    <p>Email :</p>
+    <p><input type="email" name="email" maxlength="50" placeholder="Your email"></p><br>
+    <p>Password :</p>
+    <p><input type="text" name="password" maxlength="50" placeholder="Give password"></p><br>
+    <p>Repeat Password :</p>
+    <p><input type="text" name="password2" maxlength="50" placeholder="Give the password again"></p><br>
+    <button type="submit" >Submit</button>
+</form>
+
+{% endblock %}
